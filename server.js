@@ -1,22 +1,24 @@
 let http = require('http');
+let express = require('express');
 
-const PORT = 6008;
+// This instance of express handles the normal processes we 
+// would do with the http module of node
+let app = express();
 
-// Function that will be called when our 
-// endpoint is hit. 
-let requestHandler = (request, response) => {
-    response.end(
-        `request properties:
-         headers: ${Object.keys(request.headers).map((key) => {return '\t' + key + ':' + request.headers[key] + '\n';})}
-         url: ${request.url}
-         method: ${request.method}`
-    );
+// This is to test route handler chaining. 
+let routeHandlerOne = (req, res, next) => {
+    let handlerOne = 'Passing through handler one';
+    next(handlerOne);
+};
+
+// Notice that arguments passed through next appear
+// BEFORE the normal request handler parameters. 
+let routeHandlerTwo = (strFromHandlerOne, req, res, next) => {
+    res.end(`${strFromHandlerOne} and responding from handler two.`);
 }
 
-// Configure the server. 
-let server = http.createServer(requestHandler);
+app.get('/', routeHandlerOne, routeHandlerTwo);
 
-// Start the server. 
-server.listen(PORT, () => {
-    console.log(`Server listening on localhost:${PORT}`);
-});
+// Begin listening on localhost:6009.
+app.set('port', 6009);
+app.listen(app.get('port'));
