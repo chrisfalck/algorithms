@@ -1,2 +1,9 @@
-node_modules
-.vscode
+.DS_Store
+.nodemonignore
+.sass-cache/
+.bower-*/
+node_modules/
+public/lib
+test/coverage
+mean.iml
+app/components/
