@@ -27,6 +27,7 @@ app.controller('InsertionSortCtrl', ['$scope', ($scope) => {
         }
         copy[j] = key;
 
+        // Save step snapshot for display on the page.
         $scope.sortingSteps.push(copy.slice());
     }
 }]);
