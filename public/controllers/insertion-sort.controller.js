@@ -27,11 +27,6 @@ app.controller('InsertionSortCtrl', ['$scope', ($scope) => {
         }
         copy[j] = key;
 
-        let unformatted = copy.slice();
-        let formatted = [];
-        unformatted.forEach((number) => {
-            formatted.push(number);
-        })
-        $scope.sortingSteps.push(formatted.slice());
+        $scope.sortingSteps.push(copy.slice());
     }
 }]);
