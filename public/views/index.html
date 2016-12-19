@@ -1,12 +1,30 @@
-<section data-ng-controller="IndexController">
-	<div class="jumbotron">
-        <h1>'Allo, 'Allo!</h1>
-        <p>You {{test}} now have</p>
-        <ul>
-            <li>Mongoose</li>
-            <li>Express</li>
-            <li>Angular</li>
-            <li>Node</li>
-        </ul>
+<!Doctype html>
+<html>
+<body data-ng-app="Practice">
+<script 
+    src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js">
+</script>
+<script src="../controllers/index.controller.js"></script>
+<script src="../controllers/insertion-sort.controller.js"></script>
+<link href="//fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+<link href="../styles/index.css" rel="stylesheet">
+
+    <div data-ng-controller="IndexCtrl">
+        <p>
+            Welcome to a basic visualization of algorithms.
+            The goal of this site is to serve as practice in both algorithms
+            and css.
+        </p>
+        <h3>Available Views</h3>
+        <select ng-model="selectedView" 
+                ng-options="include.name for include in ngIncludeUrls">
+            <option value=""></option>
+        </select>
+        <hr>
+        <div class="view-outline" ng-show="selectedView">
+            <div ng-include="selectedView.url"></div>
+        </div>
     </div>
-</section>
+
+</body>
+</html>

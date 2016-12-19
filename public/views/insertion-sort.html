@@ -1,0 +1,12 @@
+<section>
+    <div data-ng-controller="InsertionSortCtrl">
+        <h3>Insertion Sort Non-decreasing</h3>
+        <p>Original array (random): {{unsortedArray}}</p>
+        <p>Sorting steps:</p>
+        <ul>
+            <li ng-repeat="step in sortingSteps track by $index">
+                {{$index}}. {{step}}
+            </li>
+        </ul>
+    </div>
+</section>
